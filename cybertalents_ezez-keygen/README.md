@@ -1,4 +1,4 @@
-*NOTE : FUNCTIONS NAME ARE RENAMED YOUR DISASSEMBLED BINARY WONT LOOK LIKE MINE*
+*NOTE : FUNCTIONS NAME ARE RENAMED YOUR DISASSEMBLED BINARY WONT LOOK LIKE MINE*  
 First, i noticed that the program need 2 inputs  
 [*] USERNAME, SERIAL  
 Using IDA we got the User which is "4dminUser31337" (Without quotes)  
