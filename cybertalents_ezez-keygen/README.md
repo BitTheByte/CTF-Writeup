@@ -9,7 +9,7 @@ The goal is clear we need a valid serial
 by looking to ```main``` function I know that I had to pass the first and second if statement
 The first one was easy since it only checking for the length of username and serial  
 we have some limits now .. the username need to be less that 30 char. which is okay our ```4dminUser31337``` is only 14 char next the serial need to be less than 100 char which we don't know yet :)  
-The second if checks if the length of the serial equal the length of the username but it looks complicated so I wrote a python script to find the right numbers to satisfy the conditions .. which is [42] Cool ha? we now know the length of the serial  
+The second if checks if the length of the serial equal the length of the username but it looks complicated so I wrote a python script using z3 to find the right numbers to satisfy the conditions .. which is [42] Cool ha? we now know the length of the serial  
   
 ![IMAGE](https://github.com/BitTheByte/write-ups/blob/master/cybertalents_ezez-keygen/Capturew.PNG?raw=true)  
 
