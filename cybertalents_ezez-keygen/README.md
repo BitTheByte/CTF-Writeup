@@ -38,7 +38,6 @@ int main(int argc, char **argv)
 I ran the program two times one with v2="0" and v2="1" and saved the output
 Now we only need to find the right value in hex to get the username chars  
 using python ```$ python -c "print '4'.encode('hex')"``` i got `34`  
-by knowing the value is multipicated by 2 i need to search for `68`
 So i wrote python script to handle that for me 
 Wait! What about the "+" and "-" .. don't worry i'll tell you remember when you use v2="0" thats mean its "-" and v2="1" it's "+"
 ```
