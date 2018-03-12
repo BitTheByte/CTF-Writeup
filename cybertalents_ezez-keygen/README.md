@@ -111,7 +111,7 @@ Wait! What about the "+" and "-" .. don't worry i'll tell you remember when you 
  -> 9B+
 ```
 
-The Final flag range should be 
+The Final flag range should be   
 c_34  = ["E6-","1A-","66-","9A-"]#4  
 c_64  = ["B2-","32-","CE-","4E-"]#d  
 c_109 = ["36+","49+"]            #m  
@@ -127,4 +127,5 @@ c_33  = ["E6+","66+","99+","19+"]#3
 c_33  = ["E6+","66+","99+","19+"]#3  
 c_37  = ["64+","E4+","1B+","9B+"]#7  
   
-#FLAG = 1A-B2-36+34+37-AA+39+32+B9-99+98+19+19+9B+
+#FLAG = 1A-B2-36+34+37-AA+39+32+B9-99+98+19+19+9B+  
+Note that i solved this After the CTF so i don't know the real flag
