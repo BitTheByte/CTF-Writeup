@@ -18,7 +18,7 @@ it checks for every 2 chars if there is a "-" or "+" combining this information 
 
  looking back to ```check_user``` i saw that the final output of ```check_serial``` should equal to the username
 ![IMAGE](https://github.com/BitTheByte/write-ups/blob/master/cybertalents_ezez-keygen/Capture22.PNG?raw=true)  
-i dont know how to reverse C strtol :) to i decied to write simple C program which  
+i dont know how to reverse C strtol :) to i decied to write simple C program
 ```C
 #include <stdio.h>
 int main(int argc, char **argv)
