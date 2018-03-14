@@ -15,7 +15,7 @@ The second if checks if the length of the serial equal the length of the usernam
 from z3 import *
 s = Solver()
 len_input_serial = BitVec("serial_len",128)
-s.add(LShR(LShR(0xAAAAAAAAAAAAAAABL * len_input_serial,64),1) + len_input_serial - 3 * LShR(LShR(0xAAAAAAAAAAAAAAABL * len_input_serial,64),1) == 14)
+s.add(LShR(LShR(0xAAAAAAAAAAAAAAAB * len_input_serial,64),1) + len_input_serial - 3 * LShR(LShR(0xAAAAAAAAAAAAAAAB * len_input_serial,64),1) == 14)
 s.add(len_input_serial != 38)
 if s.check() == sat:
 	print s.model()
