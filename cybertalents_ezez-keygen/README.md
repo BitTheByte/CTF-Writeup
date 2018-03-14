@@ -11,7 +11,15 @@ by looking to ```main``` function I know that I had to pass the first and second
 The first one was easy since it only checking for the length of username and serial  
 we have some limits now .. the username need to be less that 30 char. which is okay our ```4dminUser31337``` is only 14 char next the serial need to be less than 100 char which we don't know yet :)  
 The second if checks if the length of the serial equal the length of the username but it looks complicated so I wrote a python script using z3 to find the right numbers to satisfy the conditions .. which is [42] Cool ha? we now know the length of the serial  
-  
+```
+from z3 import *
+s = Solver()
+len_input_serial = BitVec("serial_len",128)
+s.add(LShR(LShR(0xAAAAAAAAAAAAAAABL * len_input_serial,64),1) + len_input_serial - 3 * LShR(LShR(0xAAAAAAAAAAAAAAABL * len_input_serial,64),1) == 14)
+s.add(len_input_serial != 38)
+if s.check() == sat:
+	print s.model()
+```
 ![IMAGE](https://github.com/BitTheByte/write-ups/blob/master/cybertalents_ezez-keygen/Capturew.PNG?raw=true)  
 
 We still need to find the serial so I looked at ```check_serial``` function
