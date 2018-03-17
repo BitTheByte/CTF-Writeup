@@ -28,7 +28,7 @@ it checks for every 2 chars if there is a "-" or "+" combining this information 
  looking back to ```check_user``` i saw that the final output of ```check_serial``` should equal to the username
 ![IMAGE](https://github.com/BitTheByte/write-ups/blob/master/cybertalents_ezez-keygen/Capture22.PNG?raw=true)  
 using this python script
-```
+```python
 from itertools import chain, product
 def bruteforce(charset, maxlength):
     return (''.join(candidate)
