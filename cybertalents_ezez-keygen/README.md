@@ -38,22 +38,26 @@ hex_n =  list(bruteforce('0123456789ABCDEF', 2))
 username = "4dminUser31337"
 
 for lc in username:
+	# change every letter to hex to decimal
 	l = lc.encode("hex")
 	if l[0] in list("abcdef"): 
 		l=int(l,16)
 	elif len(l) > 1:
 		if l[1] in list("abcdef"):
 			l=int(l,16)
+	
 	for h in hex_n:
-		strol = hex(2 * int(h,16)).replace("0x","")
+		# C strol python alternative :D
+		strol = hex(2 * int(h,16)).replace("0x","") # 2 * strol(input_user,0LL,16)
 		if len(strol) == 3: strol=strol[1:]
 		if strol[0] in list("abcdef"): 
 			strol=int(strol,16)
 		elif len(strol) > 1:
 			if strol[1] in list("abcdef"):
 				strol=int(strol,16)
-		strol_n = str(int(strol) + 0)
-		strol_p = str(int(strol) + 1)
+
+		strol_n = str(int(strol) + 0) #v2 + 0 negative
+		strol_p = str(int(strol) + 1) #v2 + 1 positive
 
 		if strol_n == str(l):
 			print "{} --> {} from {}".format(lc,strol_n ,h+ "-")
