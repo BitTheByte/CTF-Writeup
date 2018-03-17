@@ -117,5 +117,5 @@ The Final flag range should be known
 +7 = [1B+]
 ```
   
-#FLAG = 1A-32-36+34+37-2A+39+32+39-19+0F+19+19+1B+  
+#FLAG = 1A-32-36+34+37-2A+39+32+39-19+8F+19+19+1B+
 Note that i solved this After the CTF so i don't know the real flag
