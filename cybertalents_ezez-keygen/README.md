@@ -37,14 +37,16 @@ SERIAL = [ Int('key[%d]' % i) for i in range(0,len(USER)) ]
 s = Solver()
 
 for i in range(0,len(USER)):
-	s.add( SERIAL[i]  == USER[i] / 2 )
-	if USER[i] % 2 == 0:
-		FORMAT += "-"
-	else:
-		FORMAT += "+"
-	s.check()
-	
+	s.push()
+	s.add( (2 * SERIAL[i] )+ 0  == USER[i] )
+	if s.check() == unsat: s.pop() 
+	else : FORMAT += "-"
+	s.push()
+	s.add( (2 * SERIAL[i] )+ 1  == USER[i])
+	if s.check() == unsat: s.pop()
+	else : FORMAT += "+"
 print s.model()
+print FORMAT
 ```
 Solution was
 ```
