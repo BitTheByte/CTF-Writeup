@@ -29,93 +29,57 @@ it checks for every 2 chars if there is a "-" or "+" combining this information 
 ![IMAGE](https://github.com/BitTheByte/write-ups/blob/master/cybertalents_ezez-keygen/Capture22.PNG?raw=true)  
 using this python script
 ```python
-from itertools import chain, product
-def bruteforce(charset, maxlength):
-    return (''.join(candidate)
-    	for candidate in chain.from_iterable(product(charset, repeat=i)
-        for i in xrange(2, maxlength + 1)))
-hex_n =  list(bruteforce('0123456789ABCDEF', 2))
-username = "4dminUser31337"
+from z3 import *
 
-for lc in username:
-	# change every letter to hex to decimal
-	l = lc.encode("hex")
-	if l[0] in list("abcdef"): 
-		l=int(l,16)
-	elif len(l) > 1:
-		if l[1] in list("abcdef"):
-			l=int(l,16)
+USER = bytearray("4dminUser31337")
+SERIAL = [ Int('key[%d]' % i) for i in range(0,len(USER)) ]
+s = Solver()
+
+for i in range(0,len(USER)):
+	s.add( SERIAL[i]  == USER[i] / 2 )
+	s.check()
 	
-	for h in hex_n:
-		# C strol python alternative :D
-		strol = hex(2 * int(h,16)).replace("0x","") # 2 * strol(input_user,0LL,16)
-		if len(strol) == 3: strol=strol[1:]
-		if strol[0] in list("abcdef"): 
-			strol=int(strol,16)
-		elif len(strol) > 1:
-			if strol[1] in list("abcdef"):
-				strol=int(strol,16)
-
-		strol_n = str(int(strol) + 0) #v2 + 0 negative
-		strol_p = str(int(strol) + 1) #v2 + 1 positive
-
-		if strol_n == str(l):
-			print "{} --> {} from {}".format(lc,strol_n ,h+ "-")
-		if strol_p == str(l):
-			print "{} --> {} from {}".format(lc,strol_p ,h+ "+")
-
+print s.model()
 ```
-i got ..
+Solution was
 ```
-4 --> 34 from 1A-
-4 --> 34 from 9A-
-d --> 64 from 32-
-d --> 64 from B2-
-m --> 109 from 36+
-m --> 109 from B6+
-i --> 69 from 34+
-i --> 69 from B4+
-n --> 110 from 37-
-n --> 110 from B7-
-U --> 55 from 2A+
-U --> 55 from AA+
-s --> 73 from 39+
-s --> 73 from B9+
-e --> 65 from 32+
-e --> 65 from B2+
-r --> 72 from 39-
-r --> 72 from B9-
-3 --> 33 from 19+
-3 --> 33 from 99+
-1 --> 31 from 0F+
-1 --> 31 from 18+
-1 --> 31 from 8F+
-1 --> 31 from 98+
-3 --> 33 from 19+
-3 --> 33 from 99+
-3 --> 33 from 19+
-3 --> 33 from 99+
-7 --> 37 from 1B+
-7 --> 37 from 9B+
+key[8] = 57
+key[3] = 52
+key[0] = 26
+key[4] = 55
+key[5] = 42
+key[6] = 57
+key[1] = 50
+key[13] = 27
+key[7] = 50
+key[9] = 25
+key[10] = 24
+key[2] = 54
+key[11] = 25
+key[12] = 25
 ```
-
-The Final flag range should be known
-```
-+4 = [1A-,9A-]
-+d = [32-,B2-]
-+m = [36+,B6+]
-+i = [34+,B4+]
-+n = [37-,B7-]
-+U = [2A+,AA+]
-+s = [39+,B9+]
-+e = [32+,B2+]
-+r = [39-,B9-]
-+3 = [19+,99+]
-+1 = [18+,8F+,98+]
-+3 = [19+,99+]
-+3 = [19+,99+]
-+7 = [1B+]
+Soo.. :D
+```python
+key = [None] * len(SERIAL)
+key[8] = 57
+key[3] = 52
+key[0] = 26
+key[4] = 55
+key[5] = 42
+key[6] = 57
+key[1] = 50
+key[13] = 27
+key[7] = 50
+key[9] = 25
+key[10] = 24
+key[2] = 54
+key[11] = 25
+key[12] = 25
+for x in key:
+	if x % 2 == 0:
+		print hex(x)[-2:] + "-",
+	else:
+		print hex(x)[-2:] + "+",
 ```
   
-#FLAG = 1A-32-36+34+37-2A+39+32+39-19+8F+19+19+1B+  
-Note that i solved this After the CTF so i don't know the real flag
+#FLAG = 1a-32-36-34-37+2a-39+32-39+19+18-19+19+1b+
