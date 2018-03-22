@@ -45,47 +45,14 @@ for i in range(0,len(USER)):
 	s.add( (2 * SERIAL[i] )+ 1  == USER[i])
 	if s.check() == unsat: s.pop()
 	else : FORMAT += "+"
-print s.model()
-print FORMAT
-```
-Solution was
-```
-key[8] = 57
-key[3] = 52
-key[0] = 26
-key[4] = 55
-key[5] = 42
-key[6] = 57
-key[1] = 50
-key[13] = 27
-key[7] = 50
-key[9] = 25
-key[10] = 24
-key[2] = 54
-key[11] = 25
-key[12] = 25
---++-+++-+++++
-```
-Soo.. :D
-```python
-key = [None] * 14
-key[8] = 57
-key[3] = 52
-key[0] = 26
-key[4] = 55
-key[5] = 42
-key[6] = 57
-key[1] = 50
-key[13] = 27
-key[7] = 50
-key[9] = 25
-key[10] = 24
-key[2] = 54
-key[11] = 25
-key[12] = 25
-FORMAT = "--++-+++-+++++"
-for i in range(len(key)):
-	print hex(key[i])[-2:]+FORMAT[i],
+
+
+final = ""
+for i in range(len(SERIAL)):
+	n =  hex(int(str(s.model()[SERIAL[i]])))[-2:]
+	final += n + FORMAT[i]
+print final
+
 ```
   
 #FLAG = 1a-32-36+34+37-2a+39+32+39-19+18+19+19+1b+
