@@ -32,11 +32,16 @@ using this python script
 from z3 import *
 
 USER = bytearray("4dminUser31337")
+FORMAT = ""
 SERIAL = [ Int('key[%d]' % i) for i in range(0,len(USER)) ]
 s = Solver()
 
 for i in range(0,len(USER)):
 	s.add( SERIAL[i]  == USER[i] / 2 )
+	if USER[i] % 2 == 0:
+		FORMAT += "-"
+	else:
+		FORMAT += "+"
 	s.check()
 	
 print s.model()
@@ -57,10 +62,11 @@ key[10] = 24
 key[2] = 54
 key[11] = 25
 key[12] = 25
+--++-+++-+++++
 ```
 Soo.. :D
 ```python
-key = [None] * len(SERIAL)
+key = [None] * 14
 key[8] = 57
 key[3] = 52
 key[0] = 26
@@ -75,11 +81,9 @@ key[10] = 24
 key[2] = 54
 key[11] = 25
 key[12] = 25
-for x in key:
-	if x % 2 == 0:
-		print hex(x)[-2:] + "-",
-	else:
-		print hex(x)[-2:] + "+",
+FORMAT = "--++-+++-+++++"
+for i in range(len(key)):
+	print hex(key[i])[-2:]+FORMAT[i],
 ```
   
 #FLAG = 1a-32-36-34-37+2a-39+32-39+19+18-19+19+1b+
