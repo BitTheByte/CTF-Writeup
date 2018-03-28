@@ -21,14 +21,3 @@ for i in range(0,5):
 	k = bytearray( ( hex(k).replace("0x","").replace("L","") ).decode("hex") )
 	for x in k:
 		print chr(ROTATE_CHIPHER(x,i)),
-
-
-#def decrypt(a1,a2):
-#	return (a1 >> (a2 & 0x1F)) | (a1 >> (-(a2 & 0x1F) & 0x1F))
-#for i in range(0,5):
-#	k =  int(decrypt(flag[i], i))
-#	k = bytearray( ( hex(k).replace("0x","").replace("L","") ).decode("hex") )
-#	for x in k:
-#		print chr(ROTATE_CHIPHER(x,i)),
-
-
