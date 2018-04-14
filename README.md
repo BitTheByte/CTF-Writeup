@@ -1,2 +1,2 @@
 # write-ups
-* LAZY *
+* Lazy
