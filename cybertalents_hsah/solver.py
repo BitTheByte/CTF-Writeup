@@ -39,4 +39,4 @@ for i in xrange(31,127,1):
 		f = Find(pair,res)
 		if  f != 0:
 			print "Found {}".format(f)
-#flag = FLAG{Find-trsh-in-the-haash!!}
+#flag = FLAG{Find-hash-in-the-trash!!}
