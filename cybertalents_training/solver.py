@@ -13,13 +13,10 @@ def Enc(usrinpt):
   for i in range(len(usrinpt)):
     chrUsrInpt = usrinpt[i]
     newChrInpt = chrUsrInpt + BytePadding(i)
-    if(ischr(chrUsrInpt)):
+    if (ischr(chrUsrInpt)):
       v4 = 0x7A
     else:
-      if(isNum(chrUsrInpt)):
-        v4 = 0x5A
-      else:
-        v4 = chrUsrInpt
+      v4 = 0x5A if (isNum(chrUsrInpt)) else chrUsrInpt
     while (newChrInpt > v4):
       newChrInpt -=0x1A
     if chrUsrInpt == ord('{'):
@@ -27,10 +24,7 @@ def Enc(usrinpt):
     elif chrUsrInpt == ord('}'):
       _out = "{"
     else:
-      if(ischr_(chrUsrInpt)):
-        _out = (newChrInpt)
-      else:
-        _out = (chrUsrInpt)
+      _out = newChrInpt if (ischr_(chrUsrInpt)) else chrUsrInpt
     if _out != "":
       out.append(_out)
   return out

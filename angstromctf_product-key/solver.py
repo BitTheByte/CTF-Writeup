@@ -1,10 +1,7 @@
 from z3 import *
 
 def sumchar(a, a1, a2, a3):
-    sum_ = 0
-    for i in range(a1, a2, a3):
-        sum_ += a[i]
-    return sum_
+    return sum(a[i] for i in range(a1, a2, a3))
  
  
 def swap(a, a1, a2):

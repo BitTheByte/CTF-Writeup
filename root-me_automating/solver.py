@@ -18,7 +18,7 @@ def asmflit(s):
 		int(s,16)
 	except:
 		return "NOT_HEX"
-	return '0x'+s
+	return f'0x{s}'
 def getData(asm,i='linux'):
 	MOV_INS   = []
 	XOR_INS   = []
@@ -51,8 +51,8 @@ def getData(asm,i='linux'):
 			val = asmflit(i)
 			if val != "NOT_HEX":
 				XOR_INS.append(val)
-		if len(MOV_INS) > len(XOR_INS):
-			if CMP != None:
+		if CMP != None:
+			if len(MOV_INS) > len(XOR_INS):
 				XOR_INS.append("0x00")
 
 	return MOV_INS,XOR_INS
