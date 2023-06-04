@@ -8,13 +8,12 @@ def reverse_message(msg):
 			xmsg += msg[i+21]
 		except:
 			pass
-	msg = xmsg[-1:] + xmsg[:-1]
-	return msg
+	return xmsg[-1:] + xmsg[:-1]
 def reverse_loop(msg,perm):
 	final = ""
 	for x in [7,14,21,28,35,42]:
 		block = list(msg[x-7:x])
-		if block == []:
+		if not block:
 			break
 		dblock =  [0,0,0,0,0,0,0]
 		for i in range(0,len(perm)):

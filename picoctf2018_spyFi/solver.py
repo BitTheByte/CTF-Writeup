@@ -24,10 +24,7 @@ def isdub(arr):
 		del cont[bbb_enc]
 	except:
 		pass
-	for key in cont:
-		if cont[key] > 1:
-			return 1
-	return 0
+	return next((1 for value in cont.values() if value > 1), 0)
 
 	
 plaintext =  "ying code is: p"

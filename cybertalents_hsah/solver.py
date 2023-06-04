@@ -28,10 +28,7 @@ def Find(m,res):
 			cut = X[x:-y]
 			if cut in res and len(cut) > 20:
 				Score += 1
-	if Score > 50:
-		return m
-	else:
-		return 0
+	return m if Score > 50 else 0
 
 for i in xrange(31,127,1):
 	for i2 in xrange(31,127,1):

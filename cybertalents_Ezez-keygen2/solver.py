@@ -1,11 +1,9 @@
 USERNAME = "4dminUser31337"
 
 def getIndex(s,s1):
-	x = 0
-	for i in s1:
+	for x, i in enumerate(s1):
 		if s == i:
 			return x
-		x += 1
 
 def getBin(a1):
 	return format(a1,"b").rjust(4,"0")
